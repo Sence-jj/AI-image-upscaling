@@ -33,3 +33,4 @@ uploads/
 temp/
 weights/
 *.pth
+node_modules/
