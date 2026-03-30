@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SessionProvider } from "@/components/SessionProvider";
 
 export const metadata: Metadata = {
   title: "AI Image Upscaling",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-50">{children}</body>
+    <html lang="zh-CN">
+      <body className="bg-gray-50">
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }
