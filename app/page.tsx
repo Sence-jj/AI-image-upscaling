@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Suspense } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 
-export default function Home() {
+function HomeContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -210,5 +210,13 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">加载中...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
